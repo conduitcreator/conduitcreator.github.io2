@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<MultiLang>
+  <SkipModeMenu>false</SkipModeMenu>
+  <StartInLanguage>en</StartInLanguage>
+  <SingleLanguageResponsive>false</SingleLanguageResponsive>
+  <ShowLanguageMenu>false</ShowLanguageMenu>
+  <MultiLangCSS>skins/multilang-menu.css</MultiLangCSS>
+  <LanguagesAvailable>
+    <Language shortcode="en">English</Language>
+  </LanguagesAvailable>
+</MultiLang>

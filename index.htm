@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta name="title" content="Video Now!">
+
+  <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+  <title>Inspired eLearning</title>
+
+  <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.timer.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.timer2.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="js/jsencryption.js"></script>
+
+  <script type="text/javascript">
+    /*
+     * IEngine4
+     * IEngine4 Video Engine
+     *
+     * Copyright (c) Inspired eLearning Inc. 2003-2019.  All Rights Reserved.
+     * This source file is proprietary property of Inspired eLearning Inc.
+     * http://http://www.inspiredelearning.com/inspired/License
+     *
+     * @version 5.2.0
+     */
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS, 'i');
+      var results = regex.exec(window.location.search);
+      if (results == null)
+        return "";
+      else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    var SettingsXML;
+    var MultiLangXML;
+    var VersionXML;
+
+    var DialogIsVisible = false;
+
+
+    var AutoStartLanguageFolder = ""; //no longer used
+
+    var admin_Version = "";
+
+    var admin_LaunchIntroFile_Path = "";
+    var admin_LaunchIntroFile_Yes = "true";
+    var admin_LaunchIntroFile_DefaultMode = "video";
+
+    var admin_SkipModeMenu = "false";
+    var admin_ShowLanguageMenu = "false";
+    var admin_CSSFile = "index.css";
+
+    var admin_LicenseURL = "";
+    var KeyCode = "";
+
+    var aDate = new Date();
+    xcode = $.timerY(aDate.getFullYear() + "." + aDate.getUTCMonth() + "." + aDate.getDate(), 'IEngine');
+    var XCode = xcode.substring(0, 3) + xcode.substr(xcode.length - 1, 1);
+
+    xcode2 = $.timerY(aDate.getFullYear() + "." + aDate.getUTCMonth() + "." + (aDate.getDate() - 1), 'IEngine');
+    var XCode2 = xcode2.substring(0, 3) + xcode2.substr(xcode2.length - 1, 1);
+
+    xcode3 = $.timerY(aDate.getFullYear() + "." + aDate.getUTCMonth() + "." + (aDate.getDate() + 1), 'IEngine');
+    var XCode3 = xcode3.substring(0, 3) + xcode3.substr(xcode3.length - 1, 1);
+
+    var languagesFound = 0;
+    var langFound = "";
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    function loadCourseCssFile(pathToFile) {
+
+      if (document.createStyleSheet) {
+        try {
+          document.createStyleSheet(pathToFile);
+        } catch (e) {
+        }
+      }
+      else {
+        var css;
+        css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.type = 'text/css';
+        css.media = "all";
+        css.href = pathToFile;
+        document.getElementsByTagName("head")[0].appendChild(css);
+      }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    function parseSettingsXml(xml, CourseLanguage) {
+      admin_LaunchIntroFile_Path = $(xml).find("Launch").attr("IntroFilePath");
+      admin_LaunchIntroFile_DefaultMode = $(xml).find("Launch").attr("DefaultCourseMode").toLowerCase();
+      admin_LaunchIntroFile_Yes = $(xml).find("Launch").attr("LaunchIntroFile").toLowerCase() === 'true';
+
+      admin_LicenseURL = $(xml).find("LicenseURL").text();
+
+      //Read licensing param
+      var admin_BrandingQS = "";
+      admin_Branding = getParameterByName('ReqData');
+
+      admin_Branding_URL = getParameterByName('ApiPath');
+      if (admin_Branding_URL == "") {
+        admin_Branding_URL = "https://api.inspiredlms.com";
+      }
+      if (admin_Branding != "") {
+        admin_BrandingQS = "?ReqData=" + admin_Branding + "&ApiPath=" + admin_Branding_URL;
+      }
+
+
+      //validate usage date
+      if ((KeyCode.indexOf(XCode) == -1) && (KeyCode.indexOf(XCode2) == -1) && (KeyCode.indexOf(XCode3) == -1)) {
+        if (DialogIsVisible) {
+          window.location.href = admin_LicenseURL;
+          return false;
+        }
+      }
+
+      if (navigator.userAgent.indexOf('iPhone') !== -1 || navigator.userAgent.indexOf('Android') !== -1) {
+        if (admin_BrandingQS === "") {
+            window.location.href = "index-mobile.htm?lang=" + CourseLanguage;
+        }
+        else {
+            window.location.href = "index-mobile.htm" + admin_BrandingQS + "&lang=" + CourseLanguage;
+        }
+        return false;
+      }
+
+      if (admin_LaunchIntroFile_Yes && !admin_SkipModeMenu) {
+        window.location.href = admin_LaunchIntroFile_Path + admin_BrandingQS;
+      }
+      else {
+        if (admin_BrandingQS === "") {
+          admin_BrandingQS = "?";
+        }
+        if (admin_LaunchIntroFile_DefaultMode == "fast") {
+            window.location.href = "index-fast.htm" + admin_BrandingQS + "&lang=" + CourseLanguage;
+        }
+        else if (admin_LaunchIntroFile_DefaultMode == "text") {
+            window.location.href = "index-fast.htm" + admin_BrandingQS + "&lang=" + CourseLanguage;
+        }
+        else {
+            window.location.href = "index-video.htm" + admin_BrandingQS + "&lang=" + CourseLanguage;
+        }
+      }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    function LoadSettingsXML(CourseLanguage) {
+      $("#Loading").hide();
+      $.ajax({
+        type: "GET",
+        url: "xmls/" + CourseLanguage + "/adminsettings.xml?time=" + Math.round(+new Date() / 1000),
+        dataType: "xml",
+        success: function (xml) {
+          SettingsXML = xml;
+          parseSettingsXml(SettingsXML, CourseLanguage);
+        }
+      });
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    function LoadVersionXML(CourseLanguage) {
+      $.ajax({
+        type: "GET",
+        url: "js/data.xml?q=500&time=" + Math.round(+new Date() / 1000),
+        dataType: "xml",
+        success: function (xml) {
+          VersionXML = xml;
+          admin_Version = $(VersionXML).find("Version").text();
+          xke = $(VersionXML).find("VersionText").text();
+
+          KeyCode = $(VersionXML).find("KeyCode").text();
+          LoadSettingsXML(CourseLanguage); //load settings.xml after version and key from data.xml is loaded
+        }
+      });
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    function DropDown(el) {
+      this.dd = el;
+      this.initEvents();
+    }
+
+    DropDown.prototype = {
+      initEvents: function () {
+        var obj = this;
+
+        obj.dd.on('click', function (event) {
+          $(this).toggleClass('active');
+          event.stopPropagation();
+        });
+      }
+    }
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    $(document).ready(function () {
+
+      var dd = new DropDown($('#dd'));
+
+      $(document).click(function () {
+        // all dropdowns
+        $('.lang-dropdown').removeClass('active');
+      });
+
+
+      $.ajax({
+        url: 'xmls/multilang.xml?time=' + Math.round(+new Date() / 1000),
+        type: 'get',
+        dataType: "xml",
+        async: false,
+        error: function () {
+          //no multilang.xml found default to laoding english xml
+          AutoStartLanguageFolder = "en";
+
+          LoadVersionXML(AutoStartLanguageFolder); //no delay needed
+        },
+        success: function (xml) {
+          MultiLangXML = xml;
+
+          if (navigator.userAgent.indexOf('iPhone') !== -1 || navigator.userAgent.indexOf('Android') !== -1) {
+            $("#languagelist-logo").css({"width": "128px"});
+          }
+
+          admin_CSSFile = $(MultiLangXML).find("MultiLangCSS").text();
+          if (typeof admin_CSSFile== "undefined") {
+            admin_CSSFile= "index.css";
+          }
+          loadCourseCssFile(admin_CSSFile);
+
+
+          admin_SkipModeMenu = $(MultiLangXML).find("SkipModeMenu").text();
+          if (typeof admin_SkipModeMenu == "undefined") {
+            admin_SkipModeMenu = false;
+          }
+          else {
+            admin_SkipModeMenu = admin_SkipModeMenu.toLowerCase() === "true";
+          }
+
+          admin_ShowLanguageMenu = $(MultiLangXML).find("ShowLanguageMenu").text();
+          if (typeof admin_ShowLanguageMenu == "undefined") {
+            admin_ShowLanguageMenu = false;
+          }
+          else {
+            admin_ShowLanguageMenu = admin_ShowLanguageMenu.toLowerCase() === "true";
+          }
+
+          AutoStartLanguageFolder = $(MultiLangXML).find("StartInLanguage").text();
+
+          if (AutoStartLanguageFolder != "" && !admin_ShowLanguageMenu) //auto start without language selection menu
+          {
+            LoadVersionXML(AutoStartLanguageFolder); //no delay needed
+          }
+          else {
+            $('.container1').show();
+
+            languagesFound = 0;
+            $(MultiLangXML).find("Language").each(function () {
+              languagesFound++;
+              langFound = $(this).attr("shortcode");
+              $("#langdropdown").append('<li><a href="#" data-lang="' + $(this).attr("shortcode") + '" class="langlink">' + $(this).text() + '</a></li>');
+            });
+
+            $(".langlink").on('click', function () {
+              $("#langselect").html($(this).data("lang") + "...");
+              $('.lang-dropdown').removeClass('active');
+
+              let LangSelection = $(this).data("lang");
+              LoadVersionXML(LangSelection); //no delay needed
+            });
+
+            //if only one language detected
+            if (languagesFound == 1) {
+              LoadSettingsXML(langFound);
+            }
+          }
+        }
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+<div ID="Loading" style="display: none"></div>
+
+<div class="container1" style="display: none">
+  <img ID="languagelist-logo" src="languages-small.jpg" style=" text-align:center; width:240px; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0,0,0,0.5);"/>
+  <br/>
+
+  <div class="lang-select">
+    <div id="dd" class="lang-dropdown" tabindex="1"><span id="langselect">language/语/idioma/sprache</span>
+      <ul class="dropdown" id="langdropdown">
+      </ul>
+    </div>
+    ​
+  </div>
+
+</div>
+
+
+</body>

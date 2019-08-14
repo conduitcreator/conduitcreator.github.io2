@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<course Name="Protecting Against Spear Phishers ">
+  <Templates DefaultTemplate="VideoTemplate1">
+    <Template HasVideo="false" VideoHeight="521" VideoWidth="926" Name="TextTemplate1"><![CDATA[<div id="jplayer_video"></div>
+    			<div class="text-field-background-style2"><a href="#"  onclick="return false" id="TextArea1" class="text-field-style2" style="color:black"></a></div>
+    			<div id="VideoOverLap_subtitles" style="position:absolute; left:0px; top:400px; width:926px; z-index:3"></div>
+    			<div id="VideoOverLap" style="position:absolute; left:17px; top:400px; width:890px; z-index:3"></div>]]></Template>
+    <Template HasVideo="false" VideoHeight="280" VideoWidth="780" Name="QuizTemplate"><![CDATA[<div style="width:926px; height:520px; background-color:#ffffff"></div>]]></Template>
+    <Template HasVideo="true" VideoHeight="0" VideoWidth="0" Name="SummaryTemplate"><![CDATA[<div id="TextArea1" style="width:926px; height:520px; background-color:#15406d"></div>]]></Template>
+    <Template HasVideo="false" VideoHeight="0" VideoWidth="0" Name="FlashTemplate"><![CDATA[<div style="width:926px; height:521px; background-color:#000000" id="FlashBackground"></div>]]></Template>
+    <Template HasVideo="true" VideoHeight="520" VideoWidth="926" Name="VideoTemplate2"><![CDATA[<div class="text-field-background-style4"><div id="TextArea1" class="text-field-style2"></div></div>
+                <div id="VideoOverLap_subtitles" style="position:absolute; left:0px; top:495px; width:926px; z-index:5;"></div>
+                <div id="VideoOverLap" style="position:absolute; left:30px; top:450px; width:870px; z-index:5;"></div>
+                <div id="VideoOverLap2" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap3" style="position:absolute; left:215px; top:70px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap4" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap5" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap6" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap7" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>]]></Template>
+    <Template HasVideo="false" VideoHeight="520" VideoWidth="926" Name="TextTemplate1"><![CDATA[<div id="jplayer_video"></div>
+                <div class="text-field-background-style4"><a href="#"  onclick="return false" id="TextArea2" class="text-field-style2" style="color:black"></a></div>
+                <div id="VideoOverLap_subtitles" style="position:absolute; left:0px; top:475px; width:926px; z-index:5;"></div>
+                <div id="VideoOverLap" style="position:absolute; left:30px; top:440px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap2" style="position:absolute; left:30px; top:385px; width:850px; z-index:5"></div>
+                <div id="VideoOverLap3" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap4" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap5" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap6" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>
+                <div id="VideoOverLap7" style="position:absolute; left:30px; top:385px; width:870px; z-index:5"></div>]]></Template>
+    <Template HasVideo="false" VideoHeight="280" VideoWidth="780" Name="QuizTemplate"><![CDATA[<div style="width:926px; height:520px; background-color:#ffffff"></div>]]></Template>
+    <Template HasVideo="true" VideoHeight="0" VideoWidth="0" Name="SummaryTemplate"><![CDATA[<div id="TextArea3" style="width:926px; height:520px; background-color:#15406d"></div>]]></Template>
+    <Template HasVideo="false" VideoHeight="0" VideoWidth="0" Name="FlashTemplate"><![CDATA[<div style="width:926px; height:521px; background-color:#000000" id="FlashBackground"></div>]]></Template>
+  </Templates>
+  <ModeValues>
+    <Mode Name="Audio" Value="1"/>
+  </ModeValues>
+  <QuizSetup PassingPercentage="70" RetakeTillPass="true" RetakeTries="5" ScormPost="Final" FinalFile="xmls/en/exam.xml" PreExamFile="xmls/en/preexam.xml"/>
+  <Dialogs>
+    <StandardDialog Name="Dialog1" Top="104" Left="112" Width="723" Height="327" File="xmls/en/popup/popup1.htm">
+      <DialogHeader><![CDATA[<span class="form-font-20lg">Raising Concerns Through Our Formal Complaint Process</span>]]></DialogHeader>
+    </StandardDialog>
+    <QuizDialog Name="QDialog1" Top="140" Left="55" Width="816" Height="250" ContinueButton="Continue" StartButton="Start" ContinueOnCorrect="false" BgAudio="xmls/multimedia/audio/ec115/loop02.mp3">
+      <DialogHeader><![CDATA[<span class="form-font-quiz-head"><font color="#000000">Challenge Question</font></span>]]></DialogHeader>
+      <DialogBody><![CDATA[<span class="form-font-16 color-black">A local government official mentions that youâ€™d be more likely to get a contract if you hired his son as a representative. Do you think you should hire him?<br></span>]]></DialogBody>
+      <Answers Type="radio" Randomize="no">
+        <Answer AnswerID="1"><![CDATA[<span class="popupquiz-font-15">Yes</span>]]></Answer>
+        <Answer AnswerID="2"><![CDATA[<span class="popupquiz-font-15">No</span>]]></Answer>
+      </Answers>
+      <Rules>
+        <Rule AnswerID="" AudioFile="xmls/multimedia/audio/ec115/EC-115_2.mp3"><![CDATA[<span class="quizincorrect"><p>Please select your answer.</p></span>]]></Rule>
+        <Rule AnswerID="2" AudioFile="xmls/multimedia/audio/ec115/EC-115_3.mp3" Correct="yes"><![CDATA[<span class="quizcorrect"><p><b style="color:#16395e;">Correct.</b> Our anti-corruption policy prohibits anyone in the organization from making bribes of any kind, anywhere in the world. In this case, the job could be considered an improper payment.</p></span>]]></Rule>
+        <Rule AnswerID="1" AudioFile="xmls/multimedia/audio/ec115/EC-115_2.mp3"><![CDATA[<span class="quizincorrect"><p>Please Try Again.</p></span>]]></Rule>
+      </Rules>
+    </QuizDialog>
+    <BookmarkDialog Top="170" Left="190"><![CDATA[<div class="FreeTestDialog" style="width:590px; border:1px solid black; border-radius: 0; box-shadow: 0 0 0px 1px black;">
+    					<div class="CourseVideoQuizDialogHeader" style="height: 45px; background-color: #333333; border-radius: 0; padding:0;">
+    						<div style="color:white; font-family: Oswald; font-weight: bold; font-size: 18px; text-transform: uppercase; padding: 12px 0 0 40px; letter-spacing: 4px;">Resume course</div>
+    					</div>
+    					<div class="CourseVideoQuizDialogContent" style="width:590px; height: 255px; margin: 0; padding: 0;">
+    						<p style="font-family: Montserrat; padding: 20px 40px 0 40px; color: #b7b7b7; font-size: 32px; font-weight: bold; margin-bottom: 20px;">Hello,</p>
+    
+    						<p class="form-font-14 color-black" style="font-family: Montserrat; padding: 0 40px 0 40px;">Since this is not the first time you have opened the course, we have restored you to the page you were last on.</p>
+    
+    						<p class="form-font-14 guest_text-popup-continue" style="font-family: Montserrat; color: #1491bd; padding: 20px 40px 0 40px;">Click the "Resume" button to continue from where you left off, or the "Restart" button to start from the beginning.</p>
+    						<a href="#" id="GoToFirstPageButton" title="Restart" class="themebutton themesimple" style="display:inline-block; position:absolute; left:0px; bottom: 0px; margin:0; width: 295px; height:50px; background-color: #197bc4; padding:0;" ><p style="text-align: center; font-family: Oswald !important; font-weight: 300; font-size: 18px; padding-top: 15px;">Restart</p></a>
+    						<a href="#" id="FreeFormDialogCloseButton" title="Continue" class="themebutton themesimple" style="display:inline-block; position:absolute; right: 0px; bottom: 0px; margin:0; width: 295px; height:50px; background-color: #1fb0e5; padding:0;"><p style="text-align: center; font-family: Oswald !important; font-weight: 300; font-size: 18px; padding-top: 15px;">Resume</p></a>
+    					</div>
+    				</div>]]></BookmarkDialog>
+  </Dialogs>
+  <Modules>
+    <Module Name="Module 1" ID="M1">
+      <Page VideoTemplate="VideoTemplate2" TextTemplate="TextTemplate1" Name="Introduction &amp; Best Practices" MinTime="39" VideoImage="xmls/multimedia/images/logo_intro.jpg" IpadVideoImage="xmls/multimedia/images/logo_intro.jpg" Type="Course">
+        <Mode Level="1" File="xmls/multimedia/video/s-162-ph-02_wht.mp4"/>
+        <Text Insert="insert" TextModeNoBreak="yes" FadeSpeed="0" Target="VideoOverLap_subtitles" TimeToShow="00:00:01" AltImage="xmls/multimedia/images/s141/s141_intro00.jpg"><![CDATA[<img id="subtitleBackground" class="slideup" src="xmls/multimedia/images/subtitles_banner.png" style="position:absolute; top:45px; left:0px;">]]></Text>
+        <Text Insert="Overwrite" TextModeNoBreak="no" FadeSpeed="0" Target="VideoOverLap" TimeToShow="00:00:02" AltImage="xmls/multimedia/images/s141/s141_intro01.jpg"><![CDATA[<p class="form-font-11-text-white"
+      											style="font-size: 13px; text-align: center; position: absolute; top:5px; width:650px; left:105px;">Spear phishing attacks target individuals with a highly tailored Email that appears to be coming from a co-worker or someone they know and trust.
+      											</p>]]></Text>
+        <Text Insert="Overwrite" TextModeNoBreak="no" FadeSpeed="400" Target="VideoOverLap" TimeToShow="00:00:09" AltImage="xmls/multimedia/images/s141/s141_intro02.jpg"><![CDATA[<p class="form-font-11-text-white"
+      											style="font-size: 13px; text-align: center; position: absolute; top:5px; width: 820px; left:13px;">This makes it harder to resist opening a malicious attachment or clicking on an infected link. To protect yourself from spear phishers, be cautious about what you share online; this is just one way they obtain information about you and your organization.
+      											</p>]]></Text>
+        <Text Insert="Overwrite" TextModeNoBreak="no" FadeSpeed="700" Target="VideoOverLap" TimeToShow="00:00:24" AltImage="xmls/multimedia/images/s141/s141_intro02.jpg"><![CDATA[<p class="form-font-11-text-white"
+      											style="font-size: 13px; text-align: center; position: absolute; top:5px; width: 640px; left:90px;">Also, if you receive an Email from someone that is suspicious in nature, contact the sender directly and ask if they sent the Email before clicking on any links or opening any attachments.
+      											</p>]]></Text>
+        <Text Insert="Overwrite" TextModeNoBreak="no" FadeSpeed="500" Target="VideoOverLap" TimeToShow="00:00:36" AltImage="xmls/multimedia/images/s141/s141_intro02.jpg"><![CDATA[<p class="form-font-11-text-white"
+      											style="font-size: 13px; text-align: center; position: absolute; top:5px; width: 600px; left:140px;">By trusting your instincts and authenticating the sender of a suspicious Email, you can avoid being caught in a spear phisher's net.
+      											</p>]]></Text>
+        <Text Insert="Fadeout" FadeSpeed="300" Target="VideoOverLap" TimeToShow="00:00:43" AltImage=""/>
+        <Text Insert="Fadeout" FadeSpeed="100" Target="VideoOverLap_subtitles" TimeToShow="00:00:44" AltImage=""/>
+      </Page>
+      <Page Name="Course Complete" Template="FlashTemplate" Type="Flash">
+        <FlashForVideo ContinueButton="Continue" StartButton="Start">
+          <Stage>
+            <Element ID="BG" Target="FlashBackground" Top="0" Left="0"><![CDATA[<img src="xmls/multimedia/images/s141/s141_thanks.jpg">]]></Element>
+            <Element ID="Content" Target="FlashBackground" Top="370" Left="50" Width="500"><![CDATA[<div style="width:480px; overflow: hidden; height:45px; position:relative;">
+      								<h1 id="AnimatedTitle" style="margin-top:0px; padding-top: 10px; left: -400px; position:relative;">
+      									<span class="color-aqua">Course Complete</span>
+      								</h1>
+      							</div>
+      							<div id="LineLaw" class="HR" style="position:absolute; top:0px; left:-20px; width:3px;"></div>
+      							<p class="form-font-14 color-white OpacityZero" ID="P1">Thank you for completing this course.</p>
+      							<p class="form-font-14 color-white OpacityZero" ID="P2">You may now exit the course by clicking the “X” button in the upper right corner.</p>]]></Element>
+          </Stage>
+          <Sequencer>
+            <Sequence T="001" Operation="playsound" File="xmls/multimedia/audio/s141/083_course_complete.mp3" AudioEndNext="true" AudioEndBlink="false"/>
+            <Sequence T="001" ID="BG" Operation="show"/>
+            <Sequence T="001" ID="bgBlack" Operation="show"/>
+            <Sequence T="001" ID="bgBlack" Delay="500" Operation="fadeout"/>
+            <Sequence T="001" ID="image1" Delay="500" Operation="fadein"/>
+            <Sequence T="001" ID="Content" Delay="500" Operation="fadein"/>
+            <Sequence T="001" Operation="addclass" ID="header_1" Class="slideToRight05"/>
+            <Sequence T="001" Operation="addclass" ID="AnimatedTitle" Class="slideToRight1"/>
+            <Sequence T="005" Operation="addclass" ID="LineLaw" Class="drawDown"/>
+            <Sequence T="005" Operation="addclass" ID="P1" Class="slideUpTo90"/>
+            <Sequence T="005" Operation="addclass" ID="P1" Class="flyfromtopfadein"/>
+            <Sequence T="020" Operation="addclass" ID="P2" Class="slideUpTo90"/>
+            <Sequence T="020" Operation="addclass" ID="P2" Class="flyfromtopfadein"/>
+          </Sequencer>
+        </FlashForVideo>
+      </Page>
+    </Module>
+  </Modules>
+</course>
